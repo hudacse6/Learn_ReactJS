@@ -5,7 +5,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Counter from "./components/counter";
+import Counter from "./components/counter_3";
 
 ReactDOM.render(
   <React.StrictMode>
