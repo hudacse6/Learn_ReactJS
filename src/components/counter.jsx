@@ -2,34 +2,36 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
-    // imgageUrl: 'https://picsum.photos/200',
+    count: this.props.value,
+  };
+  handleIncrement = () => {
+    this.setState({ count: this.state.count + 1 });
   };
 
-  // style = {
-  //   fontSize:30,
-  //   fontWidth: 'bold',
-  // };
-
   render() {
+    console.log("props", this.props);
+
     return (
       <div>
-        {/* <img src={this.state.imgageUrl} alt=" " /> */}
-        {/* <span style={this.style} className="badge badge-primary m-2">
-        {this.countFormat()}</span> */}
-        {/* <span style={{ fontSize: 10 }} className="badge badge-primary m-2">
-          {this.countFormat()}
-        </span> */}
-        <span className="badge badge-primary m-2">{this.countFormat()}</span>
-        {/* <span>{this.state.count}</span> */}
-        <button className="btn btn-secondary btn-sm m-2">Increment</button>
+        <span className={this.getBadgeClasses()}>{this.countFormat()}</span>
+        <button
+          onClick={() => this.handleIncrement()}
+          className="btn btn-secondary btn-sm m-2"
+        >
+          Increment
+        </button>
       </div>
     );
   }
 
+  getBadgeClasses() {
+    let classes = "badge m-2 badge-";
+    classes += this.state.count === 0 ? "warning" : "primary";
+    return classes;
+  }
+
   countFormat() {
     const { count } = this.state;
-    // return this.state.count === 0 ? "zero" : this.state.count;
     return count === 0 ? "zero" : count;
   }
 }
